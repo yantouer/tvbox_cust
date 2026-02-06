@@ -34,15 +34,6 @@ jobs:
           pip install pytz
       - name: 生成clash文件
         run: |
-          # secrets读取
-          telegram_bot_token='${{secrets.TELEGRAM_BOT_TOKEN}}'
-          telegram_bot_id='${{secrets.TELEGRAM_CHAT_ID}}'
-          email_sender='${{secrets.EMAIL_SENDER}}'
-          email_pass='${{secrets.EMAIL_PASS}}'
-          email_receive='${{secrets.EMAIL_RECEIVE}}'
-          
-          export TZ='Asia/Shanghai'
-          python ./scripts/clashScript.py --telegram_bot_token ${telegram_bot_token} --telegram_bot_id ${telegram_bot_id} --email_sender ${email_sender} --email_pass ${email_pass} --email_receive ${email_receive}
           python ./scripts/tvboxSourceScript.py
           python ./scripts/holiday_cn.py
           echo "gitStatus<<EOF" >> $GITHUB_ENV
